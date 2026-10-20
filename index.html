@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جنگ جهانی | میدان نبرد منتظر شماست، فرمانده!</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --bg2: #10182b;
+            --card: rgba(20, 30, 55, 0.75);
+            --orange: #ff6b35;
+            --red: #e63946;
+            --gold: #f4a261;
+            --cyan: #00d4ff;
+            --green: #2ec4b6;
+            --text: #f1f5f9;
+            --muted: #9aa5b1;
+            --border: rgba(255,255,255,.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255,107,53,.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(0,212,255,.12) 0%, transparent 45%),
+                radial-gradient(circle at 70% 20%, rgba(230,57,70,.1) 0%, transparent 40%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        #landing {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 5%;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(230,57,70,.15);
+            border: 1px solid rgba(230,57,70,.4);
+            color: var(--red);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: .85rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .badge i { font-size: .8rem; }
+
+        #landing h1 {
+            font-size: clamp(2rem, 6vw, 3.6rem);
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 30px;
+        }
+
+        #landing h1 .warn {
+            background: linear-gradient(90deg, var(--orange), var(--red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #landing h1 .army {
+            background: linear-gradient(90deg, var(--cyan), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro {
+            color: var(--text);
+            font-size: 1.1rem;
+            line-height: 2;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+
+        .intro strong { color: var(--gold); }
+
+        .accent-line {
+            border-right: 3px solid var(--orange);
+            background: rgba(255,107,53,.08);
+            display: block;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 25px;
+            font-size: 1.15rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+            max-width: 900px;
+            width: 100%;
+            margin-bottom: 30px;
+            text-align: right;
+        }
+
+        .feature {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 18px;
+            backdrop-filter: blur(10px);
+            transition: transform .3s, border-color .3s, box-shadow .3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            border-color: var(--orange);
+            box-shadow: 0 8px 25px rgba(255,107,53,.2);
+        }
+
+        .feature .icon {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        .feature h3 {
+            font-size: .95rem;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .feature p {
+            color: var(--muted);
+            font-size: .8rem;
+            line-height: 1.7;
+        }
+
+        .final-cta {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
+        .final-cta strong { color: var(--gold); }
+
+        .bots-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .rubika-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #7c3aed, #4f46e5);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 12px 22px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(124,58,237,.35);
+            transition: transform .2s, opacity .3s;
+        }
+
+        .rubika-link:hover {
+            transform: translateY(-2px);
+            opacity: .9;
+        }
+
+        .enter-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--orange), var(--red));
+            color: white;
+            border: none;
+            padding: 16px 50px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(230,57,70,.4);
+            transition: transform .2s, box-shadow .3s;
+            margin: 10px 0 25px;
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(230,57,70,.55);
+        }
+
+        .enter-btn i { margin-left: 10px; }
+
+        .support-box {
+            margin-top: 15px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .support-box p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        /* استایل مودال (پاپ‌آپ اخطار) */
+        #modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 14, 26, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--bg2);
+            border: 1px solid var(--orange);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(255, 107, 53, 0.3);
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-content i {
+            font-size: 3rem;
+            color: var(--orange);
+            margin-bottom: 15px;
+        }
+
+        .modal-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .modal-content p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .close-modal {
+            background: var(--orange);
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .close-modal:hover {
+            background: var(--red);
+        }
+
+        @media(max-width: 768px) {
+            #landing h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="landing">
+        <div class="badge">
+            <i class="fa-solid fa-shield-halved"></i> دستور عملیات صادر شد
+        </div>
+
+        <h1>
+            🌍 <span class="warn">نبرد قدرت‌ها آغاز شد!</span><br>
+            آیا آماده‌ی تسخیر میدان نبرد هستید؟
+        </h1>
+
+        <p class="intro">
+            در ربات استراتژیک <strong>«جنگ جهانی»</strong>، شما یک فرمانده‌ی بی‌رقیب هستید.<br>
+            پایگاه نظامی خود را ارتقا دهید، اقتصاد را در دست بگیرید و با یک <strong class="army">ارتش و زرادخانه‌ی قدرتمند</strong>، سایر رقبا را به زانو درآورید!
+        </p>
+
+        <span class="accent-line">🔥 بخشی از امکانات جذاب بازی</span>
+
+        <div class="features">
+            <div class="feature">
+                <div class="icon">🏗</div>
+                <h3>توسعه و پیشرفت</h3>
+                <p>استخراج نفت، مدیریت منابع و ارتقاء سطح پایگاه.</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🚀</div>
+                <h3>زرادخانه مرگبار</h3>
+                <p>تجهیز پایگاه به انواع موشک، پهپاد، جنگنده، بمب‌افکن و سیستم‌های پدافندی.</p>
+            </div>
+            <div class="feature">
+                <div class="icon">📈</div>
+                <h3>بازار زنده</h3>
+                <p>معامله و خرید و فروش لحظه‌ای با سایر بازیکنان در یک اقتصاد کاملاً پویا!</p>
+            </div>
+            <div class="feature">
+                <div class="icon">📜</div>
+                <h3>سیاست و قدرت‌نمایی</h3>
+                <p>ارسال بیانیه برای کل سرور، تهدید رقبا و کل‌کل‌های استراتژیک.</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🏆</div>
+                <h3>رقابت نفس‌گیر</h3>
+                <p>حمله به پایگاه دیگر فرماندهان، غارت دارایی‌ها و صعود در جدول برترین‌ها.</p>
+            </div>
+        </div>
+
+        <p class="final-cta">
+            🎖 <strong>میدان نبرد منتظر دستور شماست، فرمانده!</strong><br>
+            ⚡️ همین الان وارد شو و ارتش خودت رو بساز:
+        </p>
+
+        <div class="bots-container">
+            <a class="rubika-link" href="https://rubika.ir/WWarIRbot" target="_blank"><i class="fa-solid fa-robot"></i> @WWarIRbot</a>
+            <a class="rubika-link" href="https://rubika.ir/WWarIRbot" target="_blank"><i class="fa-solid fa-bullhorn"></i> کانال: @WWarIRbot</a>
+        </div>
+
+        <button class="enter-btn" onclick="openModal()">
+            ورود به سایت <i class="fa-solid fa-arrow-left"></i>
+        </button>
+
+        <div class="support-box">
+            <p>💬 ارتباط با پشتیبانی و سوالات:</p>
+            <a class="rubika-link" href="https://rubika.ir/minicr7" target="_blank" style="background: linear-gradient(135deg, #059669, #10b981); box-shadow: 0 4px 15px rgba(16,185,129,.3);">
+                <i class="fa-solid fa-headset"></i> پشتیبانی روبیکا: @minicr7
+            </a>
+        </div>
+    </div>
+
+    <!-- پنل اخطار نسخه 1.0 -->
+    <div id="modal">
+        <div class="modal-content">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <h3>توجه فرمانده!</h3>
+            <p>سایت اصلی در نسخه <strong>1.0</strong> فعال نیست!<br>لطفاً از طریق ربات و کانال اقدام کنید.</p>
+            <button class="close-modal" onclick="closeModal()">متوجه شدم</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
