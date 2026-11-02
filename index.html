@@ -298,6 +298,23 @@
             #landing h1 { font-size: 1.8rem; }
         }
     </style>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+:root{--bg:#0b1220;--panel:#141f31;--panel2:#1b2940;--gold:#f4bd50;--text:#f4f6fb;--muted:#9eabc0;--green:#38c98b;--red:#f06a72;--line:#293951}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -10%,#263b5b 0,transparent 35%),var(--bg);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif;min-height:100vh}
+button,input{font:inherit}button{cursor:pointer;border:0}.wrap{max-width:1100px;margin:auto;padding:18px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:12px}.logo{width:52px;height:52px;border-radius:16px;background:linear-gradient(145deg,#ffdc85,#c88b24);display:grid;place-items:center;color:#172033;font-size:27px;box-shadow:0 8px 25px #e7ad3b33}.brand h1{font-size:21px;margin:0}.brand small{color:var(--muted)}
+.balance{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px 14px;color:var(--gold);font-weight:800}
+.hero{background:linear-gradient(115deg,#1d304a,#172237 65%,#3b2b18);border:1px solid #42516a;border-radius:22px;padding:24px;margin-bottom:16px;position:relative;overflow:hidden}.hero:after{content:"⚔️";position:absolute;left:24px;top:15px;font-size:76px;opacity:.12}.hero h2{margin:0 0 7px;font-size:25px}.hero p{color:#c5d0e1;margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}.stat{background:var(--panel);border:1px solid var(--line);padding:14px;border-radius:16px}.stat span{display:block;color:var(--muted);font-size:12px}.stat b{font-size:20px;color:var(--gold)}
+.layout{display:grid;grid-template-columns:220px 1fr;gap:14px}.nav,.content{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px}.nav{height:max-content;display:grid;gap:8px}.nav button{background:transparent;color:#dce4f1;text-align:right;padding:12px;border-radius:11px}.nav button.active,.nav button:hover{background:var(--panel2);color:var(--gold)}.nav button span{display:inline-block;width:28px}
+.content h2{margin:2px 0 14px;font-size:20px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:var(--panel2);border:1px solid var(--line);border-radius:15px;padding:15px}.card h3{margin:0 0 7px;font-size:16px}.card p{margin:5px 0;color:var(--muted);font-size:13px}.btn{background:linear-gradient(120deg,#f6ce75,#d99b35);color:#172033;font-weight:800;padding:10px 14px;border-radius:11px;margin-top:9px}.btn.secondary{background:#2c405d;color:#e8eef8}.btn.danger{background:#6b2935;color:#fff}.btn:disabled{opacity:.4;cursor:not-allowed}.row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.muted{color:var(--muted)}.field{width:100%;background:#0d1727;border:1px solid var(--line);border-radius:10px;color:white;padding:11px;margin-top:8px;outline:none}.notice{background:#25374f;border:1px solid #3b5270;border-radius:12px;padding:12px;color:#d9e5f5;margin:10px 0;font-size:13px}.progress{height:8px;background:#0c1625;border-radius:20px;overflow:hidden;margin-top:10px}.progress i{display:block;height:100%;background:var(--green)}.hidden{display:none!important}.empty{text-align:center;padding:25px;color:var(--muted)}.result{font-size:22px;color:var(--gold);font-weight:900;text-align:center;padding:16px}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#263951;color:white;border:1px solid #536782;padding:12px 18px;border-radius:12px;box-shadow:0 8px 30px #0008;z-index:10;max-width:90%;text-align:center}.footer{text-align:center;color:#718098;font-size:12px;padding:18px}
+@media(max-width:700px){.layout{grid-template-columns:1fr}.nav{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}.hero h2{font-size:21px}.wrap{padding:12px}}
+
+#gameApp{display:none}#gameApp .back-landing{background:#2c405d;color:#fff;border-radius:10px;padding:9px 12px;font-weight:700;margin-right:8px}#gameApp .game-head-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+
+</style>
 </head>
 <body>
 
@@ -356,8 +373,8 @@
             <a class="rubika-link" href="https://rubika.ir/WWarIRl" target="_blank"><i class="fa-solid fa-bullhorn"></i> کانال: @WWarIRI</a>
         </div>
 
-        <button class="enter-btn" onclick="openModal()">
-            ورود به سایت <i class="fa-solid fa-arrow-left"></i>
+        <button class="enter-btn" onclick="enterGame()">
+            ورود به بازی <i class="fa-solid fa-arrow-left"></i>
         </button>
 
         <div class="support-box">
@@ -368,25 +385,95 @@
         </div>
     </div>
 
-    <!-- پنل اخطار نسخه 1.1 -->
-    <div id="modal">
-        <div class="modal-content">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            <h3>توجه فرمانده!</h3>
-            <p>سایت اصلی در نسخه <strong>1.1</strong> فعال نیست!<br>لطفاً از طریق ربات و کانال اقدام کنید.</p>
-            <button class="close-modal" onclick="closeModal()">متوجه شدم</button>
-        </div>
-    </div>
 
-    <script>
-        function openModal() {
-            document.getElementById('modal').style.display = 'flex';
-        }
 
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-    </script>
-
+<div id="gameApp"><div class="wrap">
+<header><div class="brand"><div class="logo">⚔</div><div><h1>جنگ جهانی</h1><small>WORLD WAR · فرماندهی با توست</small></div></div><div class="balance">💰 <b id="topCoins">0</b></div><div class="game-head-actions"><button class="back-landing" onclick="backToLanding()">↩ بازگشت به صفحه اصلی</button></div></header>
+<section class="hero"><h2 id="heroTitle">به میدان نبرد خوش آمدی، فرمانده!</h2><p id="heroSub">کشورت را بساز، اقتصاد را گسترش بده و ارتش قدرتمند تشکیل بده.</p></section>
+<section class="stats">
+ <div class="stat"><span>🏳️ کشور</span><b id="countryStat">—</b></div>
+ <div class="stat"><span>💰 سکه</span><b id="coinStat">۰</b></div>
+ <div class="stat"><span>🎟 کوپن</span><b id="couponStat">۰</b></div>
+ <div class="stat"><span>⚔️ قدرت ارتش</span><b id="powerStat">۰</b></div>
+</section>
+<div class="layout">
+<nav class="nav" id="nav">
+<button class="active" data-page="home"><span>🏠</span> خانه</button>
+<button data-page="wheel"><span>🎡</span> گردونه شانس</button>
+<button data-page="shop"><span>🛒</span> فروشگاه ارتش</button>
+<button data-page="mines"><span>⛏️</span> معادن</button>
+<button data-page="bank"><span>🏦</span> بانک</button>
+<button data-page="coupons"><span>🎟</span> خرید کوپن</button>
+<button data-page="invite"><span>🎁</span> کد دعوت</button>
+<button data-page="country"><span>🏳️</span> کشور من</button>
+<button data-page="stats"><span>📊</span> آمار کشور</button>
+</nav>
+<main class="content" id="content"></main>
+</div>
+<div class="footer">WORLD WAR · نسخه وب مستقل · اطلاعات روی همین مرورگر ذخیره می‌شود</div>
+</div>
+<div id="toast" class="toast hidden"></div>
+<script>
+const KEY='worldWarWeb_v1';
+const $=id=>document.getElementById(id);
+const fa=n=>Number(n||0).toLocaleString('fa-IR');
+const en=s=>String(s).replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+const now=()=>Date.now();
+const catalog={
+ soldiers:[['سرباز عادی',1,10250],['کماندو',10,11500]],
+ tanks:[['تانک صاعقه',250,11200],['تانک آذرخش',500,12200],['تانک تندر',1000,13500],['تانک آریا',1500,14800],['تانک غول آهنین',2000,16000]],
+ missiles:[['موشک اسکاد',10000,31000],['موشک شهاب',15000,40000],['موشک فاتح',20000,52000],['موشک خرمشهر',30000,70000],['موشک قاره‌پیما',50000,110000]]
+};
+const mineTypes={iron:{name:'معدن آهن',price:100000,rate:15000},gold:{name:'معدن طلا',price:300000,rate:35000},diamond:{name:'معدن الماس',price:500000,rate:60000}};
+function fresh(){return {country:'',coins:20000,coupons:0,inventory:{soldiers:0,tanks:0,missiles:0},items:{},bank:0,bankUpdated:now(),mines:{iron:0,gold:0,diamond:0},mineUpdated:now(),lastFreeSpin:0,spins:0,inviteCode:String(Math.floor(1000+Math.random()*9000)),usedInvite:false,invited:[],created:now(),history:[]}}
+let state;try{state=JSON.parse(localStorage.getItem(KEY))||fresh()}catch{state=fresh()}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));renderHeader()}
+function toast(t){$('toast').textContent=t;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2600)}
+function power(){return Object.values(state.items).reduce((a,x)=>a+x.count*x.power,0)}
+function normalize(){state.items=state.items||{};state.inventory=state.inventory||{soldiers:0,tanks:0,missiles:0};state.mines=state.mines||{iron:0,gold:0,diamond:0};state.bankUpdated=state.bankUpdated||now();state.mineUpdated=state.mineUpdated||now()}
+normalize();
+function accrue(){let hours=Math.max(0,(now()-state.bankUpdated)/3600000);if(hours>=1){let whole=Math.floor(hours);state.bank=Math.floor(state.bank*Math.pow(1.15,whole));state.bankUpdated+=whole*3600000}
+ let elapsed=Math.max(0,(now()-state.mineUpdated)/3600000);if(elapsed>0){let income=Object.entries(state.mines).reduce((a,[k,c])=>a+c*mineTypes[k].rate,0)*elapsed;state.pendingMine=(state.pendingMine||0)+income;state.mineUpdated=now()}save()}
+function renderHeader(){$('topCoins').textContent=fa(state.coins);$('countryStat').textContent=state.country||'—';$('coinStat').textContent=fa(state.coins);$('couponStat').textContent=fa(state.coupons);$('powerStat').textContent=fa(power());$('heroTitle').textContent=state.country?`فرمانده کشور ${state.country}، خوش آمدی!`:'به میدان نبرد خوش آمدی، فرمانده!';$('heroSub').textContent=state.country?'اقتصاد و ارتش کشورت را مدیریت کن و قدرتمندتر شو.':'اول کشور خودت را بساز و وارد بازی شو.'}
+let page='home';
+function go(p){page=p;document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===p));render()}
+$('nav').addEventListener('click',e=>{let b=e.target.closest('button[data-page]');if(b)go(b.dataset.page)});
+function shell(title,body){$('content').innerHTML=`<h2>${title}</h2>${body}`}
+function needCountry(){if(!state.country){go('country');toast('ابتدا نام کشور خود را ثبت کن.');return false}return true}
+function home(){shell('🏠 مرکز فرماندهی',state.country?`
+<div class="notice">🏳️ کشور <b>${esc(state.country)}</b> آماده فرماندهی توست. سرمایه اولیه بازی ۲۰٬۰۰۰ سکه بوده است.</div>
+<div class="cards">
+<div class="card"><h3>🎡 گردونه شانس</h3><p>هر روز یک بار رایگان؛ دفعات اضافه با کوپن.</p><button class="btn" onclick="go('wheel')">رفتن به گردونه</button></div>
+<div class="card"><h3>🪖 ارتش کشور</h3><p>قدرت فعلی: ${fa(power())}</p><button class="btn" onclick="go('shop')">خرید تجهیزات</button></div>
+<div class="card"><h3>⛏️ اقتصاد و معادن</h3><p>درآمد معدن‌ها حتی هنگام خروج از سایت محاسبه می‌شود.</p><button class="btn" onclick="go('mines')">مدیریت معادن</button></div>
+<div class="card"><h3>🏦 بانک کشور</h3><p>سود بانکی هر ساعت ۱۵٪ محاسبه می‌شود.</p><button class="btn" onclick="go('bank')">ورود به بانک</button></div>
+</div>`:`<div class="empty"><div style="font-size:48px">🏳️</div><h3>هنوز کشوری نساخته‌ای</h3><p>برای شروع بازی یک نام برای کشور خود انتخاب کن.</p><button class="btn" onclick="go('country')">ساخت کشور</button></div>`)}
+function country(){shell('🏳️ کشور من',state.country?`<div class="card"><h3>${esc(state.country)}</h3><p>تاریخ تأسیس: ${new Date(state.created).toLocaleString('fa-IR')}</p><p>سرمایه: ${fa(state.coins)} سکه</p><p>قدرت ارتش: ${fa(power())}</p><p>کد دعوت اختصاصی: <b>${state.inviteCode}</b></p></div>`:`<div class="card"><h3>ساخت کشور جدید</h3><p>یک نام یکتا برای کشور خود انتخاب کن.</p><input id="countryName" class="field" maxlength="24" placeholder="مثلاً امپراتوری پارس"><button class="btn" onclick="createCountry()">ثبت کشور و شروع بازی</button></div>`)}
+function createCountry(){let n=$('countryName').value.trim();if(n.length<2){toast('نام کشور باید حداقل ۲ حرف باشد.');return}state.country=n;state.created=now();save();toast('کشورت با موفقیت ساخته شد!');go('home')}
+function wheel(){let free=Date.now()-state.lastFreeSpin>=86400000;shell('🎡 گردونه شانس',`<div class="card" style="text-align:center"><div style="font-size:70px">🎡</div><h3>شانس خودت را امتحان کن!</h3><p>جوایز: ۳۰۰ سرباز، ۷ تانک، ۴۰٬۰۰۰ سکه، ۳٬۰۰۰ سکه یا پوچ.</p><p>وضعیت چرخش رایگان: <b>${free?'آماده استفاده':'امروز استفاده شده'}</b></p><p>هر چرخش اضافه: ۵ کوپن · کوپن فعلی: ${fa(state.coupons)}</p><button class="btn" onclick="spin(false)" ${(!free&&state.coupons<5)?'disabled':''}>چرخاندن گردونه</button><div id="spinResult" class="result"></div></div>`)}
+function spin(force){if(!needCountry())return;let free=now()-state.lastFreeSpin>=86400000;if(!free){if(state.coupons<5){toast('کوپن کافی نداری؛ برای چرخش اضافه ۵ کوپن لازم است.');return}state.coupons-=5}else state.lastFreeSpin=now();let prizes=[{label:'۳۰۰ سرباز',run:()=>state.inventory.soldiers+=300},{label:'۷ تانک',run:()=>state.inventory.tanks+=7},{label:'۴۰٬۰۰۰ سکه',run:()=>state.coins+=40000},{label:'۳٬۰۰۰ سکه',run:()=>state.coins+=3000},{label:'پوچ 😅',run:()=>{}}];let p=prizes[Math.floor(Math.random()*prizes.length)];p.run();state.spins++;state.history.unshift({t:now(),text:'گردونه: '+p.label});save();$('spinResult').textContent='🎉 جایزه تو: '+p.label;toast('گردونه چرخید: '+p.label)}
+function shop(){if(!needCountry())return;let html='';for(let [group,arr] of Object.entries(catalog)){html+=`<h3 style="margin-top:20px">${group==='soldiers'?'🪖 سربازان':group==='tanks'?'🚜 تانک‌ها':'🚀 موشک‌ها'}</h3><div class="cards">`;for(let [name,pow,price] of arr){html+=`<div class="card"><h3>${name}</h3><p>قدرت: ${fa(pow)}</p><p>قیمت هر عدد: ${fa(price)} سکه</p><input class="field" id="qty_${key(name)}" type="number" min="1" max="100000" value="1"><button class="btn" onclick="buy('${name}',${pow},${price},'${group}')">خرید</button></div>`}html+='</div>'}shell('🛒 فروشگاه ارتش',html)}
+function key(s){return s.replace(/[^a-zA-Z0-9]/g,'_')}
+function buy(name,pow,price,group){let q=Math.floor(Number($('qty_'+key(name)).value));if(!Number.isFinite(q)||q<1||q>100000){toast('تعداد واردشده معتبر نیست.');return}let total=q*price;if(state.coins<total){toast('سکه کافی نداری.');return}state.coins-=total;state.items[name]=state.items[name]||{count:0,power:pow,group};state.items[name].count+=q;state.inventory[group==='soldiers'?'soldiers':group==='tanks'?'tanks':'missiles']+=q;state.history.unshift({t:now(),text:`خرید ${q} عدد ${name}`});save();toast(`${q} عدد ${name} خریداری شد.`);shop()}
+function mines(){if(!needCountry())return;let total=Object.entries(state.mines).reduce((a,[k,c])=>a+c*mineTypes[k].rate,0);let cards=Object.entries(mineTypes).map(([k,m])=>`<div class="card"><h3>${m.name}</h3><p>قیمت خرید: ${fa(m.price)} سکه</p><p>درآمد: ${fa(m.rate)} سکه در ساعت</p><p>تعداد فعلی: ${fa(state.mines[k])} از ۴</p><input class="field" type="number" min="1" max="4" value="1" id="mine_${k}"><button class="btn" onclick="buyMine('${k}')">خرید معدن</button></div>`).join('');shell('⛏️ معادن و اقتصاد',`<div class="notice">درآمد فعلی: ${fa(total)} سکه در ساعت<br>درآمد آماده برداشت: ${fa(Math.floor(state.pendingMine||0))} سکه</div><button class="btn" onclick="harvest()">💰 برداشت درآمد معادن</button><div class="cards" style="margin-top:14px">${cards}</div>`)}
+function buyMine(k){let q=Math.floor(Number($('mine_'+k).value)),m=mineTypes[k];if(q<1||q>4||state.mines[k]+q>4){toast('حداکثر ۴ معدن از هر نوع می‌توانی داشته باشی.');return}let cost=q*m.price;if(state.coins<cost){toast('سکه کافی نیست.');return}state.coins-=cost;state.mines[k]+=q;save();toast(`${q} ${m.name} خریداری شد.`);mines()}
+function harvest(){let amount=Math.floor(state.pendingMine||0);if(amount<1){toast('هنوز درآمدی برای برداشت وجود ندارد.');return}state.coins+=amount;state.pendingMine=0;save();toast(`${fa(amount)} سکه به حسابت اضافه شد.`);mines()}
+function bank(){if(!needCountry())return;shell('🏦 بانک کشور',`<div class="notice">موجودی بانک: <b>${fa(state.bank)}</b> سکه<br>سود: ۱۵٪ به‌ازای هر ساعت کامل (سود مرکب).</div><div class="cards"><div class="card"><h3>💵 واریز به بانک</h3><input id="deposit" class="field" type="number" min="1" placeholder="مبلغ واریز"><button class="btn" onclick="bankMove('deposit')">واریز</button></div><div class="card"><h3>💸 برداشت از بانک</h3><input id="withdraw" class="field" type="number" min="1" placeholder="مبلغ برداشت"><button class="btn" onclick="bankMove('withdraw')">برداشت</button></div></div>`)}
+function bankMove(type){let id=type==='deposit'?'deposit':'withdraw',n=Math.floor(Number($(id).value));if(n<1){toast('مبلغ معتبر وارد کن.');return}if(type==='deposit'){if(n>state.coins){toast('موجودی کیف پول کافی نیست.');return}state.coins-=n;state.bank+=n}else{if(n>state.bank){toast('موجودی بانک کافی نیست.');return}state.bank-=n;state.coins+=n}save();toast('تراکنش با موفقیت انجام شد.');bank()}
+function coupons(){shell('🎟 خرید کوپن',`<div class="notice">موجودی فعلی: ${fa(state.coupons)} کوپن</div><div class="cards">${[[5,25000],[10,45000],[100,1000000]].map(([q,p])=>`<div class="card"><h3>${q} کوپن</h3><p>قیمت: ${fa(p)} سکه</p><button class="btn" onclick="buyCoupons(${q},${p})">خرید بسته</button></div>`).join('')}</div>`)}
+function buyCoupons(q,p){if(state.coins<p){toast('سکه کافی نداری.');return}state.coins-=p;state.coupons+=q;save();toast(`${q} کوپن خریداری شد.`);coupons()}
+function invite(){if(!needCountry())return;shell('🎁 کد دعوت',`<div class="card"><h3>کد دعوت اختصاصی تو</h3><div class="result">${state.inviteCode}</div><p>کد ۴ رقمی خودت را برای دوستانت بفرست.</p><button class="btn secondary" onclick="copyCode()">کپی کد دعوت</button><p>تعداد دعوت‌شده‌ها در این مرورگر: ${fa(state.invited.length)}</p></div><div class="card" style="margin-top:12px"><h3>کد دعوت داری؟</h3><p>کد دوستت را وارد کن. هر حساب فقط یک بار می‌تواند کد دعوت ثبت کند و کد خودت قابل استفاده نیست.</p><input id="inviteInput" class="field" maxlength="4" inputmode="numeric" placeholder="کد ۴ رقمی"><button class="btn" onclick="redeemInvite()">ثبت کد دعوت</button></div><div class="notice">پاداش در نسخه واقعی: دعوت‌کننده ۳۰٬۰۰۰ و بازیکن جدید ۱۰٬۰۰۰ سکه. در نسخه مستقل مرورگری، ثبت کد فقط به‌صورت محلی شبیه‌سازی می‌شود و بین دستگاه‌های مختلف قابل تأیید نیست.</div>`)}
+function copyCode(){navigator.clipboard?.writeText(state.inviteCode).then(()=>toast('کد کپی شد.')).catch(()=>toast('کپی خودکار در این مرورگر در دسترس نیست.'))}
+function redeemInvite(){let c=en($('inviteInput').value).trim();if(!/^\d{4}$/.test(c)){toast('کد باید ۴ رقم باشد.');return}if(state.usedInvite){toast('قبلاً یک کد دعوت ثبت کرده‌ای.');return}if(c===state.inviteCode){toast('نمی‌توانی کد خودت را وارد کنی.');return}if(c===localStorage.getItem('worldWarLastRedeemed')){toast('این کد قبلاً در همین مرورگر استفاده شده.');return}state.usedInvite=true;state.coins+=10000;localStorage.setItem('worldWarLastRedeemed',c);save();toast('کد ثبت شد؛ ۱۰٬۰۰۰ سکه آزمایشی دریافت کردی.');invite()}
+function stats(){if(!needCountry())return;let inv=state.inventory;let html=`<div class="cards"><div class="card"><h3>🏳️ ${esc(state.country)}</h3><p>زمان ساخت: ${new Date(state.created).toLocaleString('fa-IR')}</p></div><div class="card"><h3>⚔️ قدرت ارتش</h3><p>${fa(power())}</p></div><div class="card"><h3>🪖 سرباز</h3><p>${fa(inv.soldiers)}</p></div><div class="card"><h3>🚜 تانک</h3><p>${fa(inv.tanks)}</p></div><div class="card"><h3>🚀 موشک</h3><p>${fa(inv.missiles)}</p></div><div class="card"><h3>🏦 موجودی بانک</h3><p>${fa(state.bank)}</p></div></div><h3 style="margin-top:20px">📜 آخرین فعالیت‌ها</h3>${state.history.slice(0,8).map(x=>`<div class="notice">${esc(x.text)} · <small>${new Date(x.t).toLocaleString('fa-IR')}</small></div>`).join('')||'<p class="muted">هنوز فعالیتی ثبت نشده است.</p>'}`;shell('📊 آمار کشور',html)}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){accrue();renderHeader();if(page==='home')home();if(page==='country')country();if(page==='wheel')wheel();if(page==='shop')shop();if(page==='mines')mines();if(page==='bank')bank();if(page==='coupons')coupons();if(page==='invite')invite();if(page==='stats')stats()}
+render();
+</script>
+</div>
+<script>
+function enterGame(){document.getElementById('landing').style.display='none';document.getElementById('gameApp').style.display='block';window.scrollTo(0,0);if(typeof render==='function')render();}
+function backToLanding(){document.getElementById('gameApp').style.display='none';document.getElementById('landing').style.display='flex';window.scrollTo(0,0);}
+</script>
 </body>
 </html>
